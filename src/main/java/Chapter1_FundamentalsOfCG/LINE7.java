@@ -1,10 +1,7 @@
-import java.awt.Canvas;
-import java.awt.Color;
+package Chapter1_FundamentalsOfCG;
+
 import java.awt.Graphics;
-import java.awt.geom.Line2D;
-import java.util.ArrayList;
 import java.util.Scanner;
-import javax.swing.JFrame;
 
 public class LINE7 extends Cosys {
 

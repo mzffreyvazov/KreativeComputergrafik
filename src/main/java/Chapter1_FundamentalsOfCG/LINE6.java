@@ -1,3 +1,5 @@
+package Chapter1_FundamentalsOfCG;
+
 import java.awt.*;
 import java.util.Scanner;
 
@@ -35,6 +37,6 @@ public class LINE6 extends Cosys {
         int nn = scanner.nextInt();
 
         LINE6 canvas = new LINE6(stepx, stepy, nn);
-        Cosys.launch(canvas, "LINE6");
+        Cosys.launch(canvas, "Chapter1_FundamentalsOfCG.LINE6");
     }
 }

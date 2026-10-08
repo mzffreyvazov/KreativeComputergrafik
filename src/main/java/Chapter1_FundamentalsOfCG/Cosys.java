@@ -1,3 +1,5 @@
+package Chapter1_FundamentalsOfCG;
+
 import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;

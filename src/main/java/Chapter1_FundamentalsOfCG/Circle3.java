@@ -1,7 +1,9 @@
+package Chapter1_FundamentalsOfCG;
+
 import java.awt.*;
 import java.util.Scanner;
 
-public class Circle3 extends Cosys{
+public class Circle3 extends Cosys {
 
     int stepr;
 
@@ -12,9 +14,9 @@ public class Circle3 extends Cosys{
 
     @Override
     public void draw(Graphics g) {
-        for (int r = 1; r<=PIXY/2; r+=stepr) {
+        for (int r = 1; r<= Cosys.PIXY/2; r+=stepr) {
             g.setColor(Color.GREEN);
-            circle(g, (double) PIXX /2, (double) PIXY /2, r);
+            circle(g, (double) Cosys.PIXX /2, (double) Cosys.PIXY /2, r);
 
         }
     }

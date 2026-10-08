@@ -1,3 +1,5 @@
+package Chapter1_FundamentalsOfCG;
+
 import java.awt.*;
 
 public class CircleTest extends Cosys {
@@ -18,8 +20,8 @@ public class CircleTest extends Cosys {
     }
 
     public static void main(String[] args) {
-        int mx = PIXX / 2;
-        int my = PIXY / 2;
+        int mx = Cosys.PIXX / 2;
+        int my = Cosys.PIXY / 2;
         int r = 300;
         CircleTest circle = new CircleTest(mx, my, r);
         Cosys.launch(circle, "Yeah");
