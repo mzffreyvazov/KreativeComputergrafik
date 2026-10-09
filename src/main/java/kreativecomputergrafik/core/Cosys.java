@@ -88,6 +88,13 @@ public abstract class Cosys extends Canvas {
         }
     }
 
+    public void box(Graphics g, Color color, double x1, double y1, double x2, double y2) {
+        if (color != null) {
+            g.setColor(color);
+        }
+        box(g, x1, y1, x2, y2);
+    }
+
     // High-precision smooth circle renderer using Path2D.Double
     public void circle(Graphics g, double x, double y, double r) {
         Graphics2D g2 = (Graphics2D) g;
