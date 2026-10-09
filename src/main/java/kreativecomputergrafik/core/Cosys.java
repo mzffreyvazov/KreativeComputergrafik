@@ -1,4 +1,4 @@
-package Chapter1_FundamentalsOfCG;
+package kreativecomputergrafik.core;
 
 import java.awt.BasicStroke;
 import java.awt.Canvas;

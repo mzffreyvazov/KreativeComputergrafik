@@ -1,7 +1,9 @@
-package Chapter1_FundamentalsOfCG;
+package chapter1;
 
 import java.awt.Graphics;
 import java.util.Scanner;
+
+import kreativecomputergrafik.core.Cosys;
 
 public class LINE5 extends Cosys {
 

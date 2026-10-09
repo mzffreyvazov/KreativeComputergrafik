@@ -1,6 +1,8 @@
-package Chapter1_FundamentalsOfCG;
+package chapter1;
 
 import java.awt.*;
+
+import kreativecomputergrafik.core.Cosys;
 
 public class CircleTest extends Cosys {
 

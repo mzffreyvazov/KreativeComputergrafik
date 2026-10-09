@@ -1,7 +1,9 @@
-package Chapter1_FundamentalsOfCG;
+package chapter1;
 
 import java.awt.*;
 import java.util.Scanner;
+
+import kreativecomputergrafik.core.Cosys;
 
 public class Circle2 extends Cosys {
 
