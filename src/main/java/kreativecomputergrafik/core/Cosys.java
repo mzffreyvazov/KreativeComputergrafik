@@ -118,6 +118,28 @@ public abstract class Cosys extends Canvas {
         currentY = y + fny(TE, r);
     }
 
+    public void circle(Graphics g, double CN, double x, double y, double r) {
+        Graphics2D g2 = (Graphics2D) g;
+        Path2D.Double path = new Path2D.Double();
+
+        // Start path at initial angle T = TS
+        path.moveTo(x + fnx(TS, r), y + fny(TS, r));
+
+        for (int N = 1; N <= CN; N++) {
+            double T = TS + ((double) N / CN) * (TE - TS);
+            double X = x + fnx(T, r);
+            double Y = y + fny(T, r);
+
+            path.lineTo(X, Y);
+        }
+
+        g2.draw(path);
+
+        // Synchronize pen cursor to the last drawn point
+        currentX = x + fnx(TE, r);
+        currentY = y + fny(TE, r);
+    }
+
     public double fnx(double t, double r) {
         return r * Math.cos(t);
     }

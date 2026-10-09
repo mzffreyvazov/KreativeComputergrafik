@@ -1,13 +1,9 @@
 package chapter1;
 
 import kreativecomputergrafik.core.Cosys;
-
-import static kreativecomputergrafik.core.Cosys.*;
 import java.awt.*;
 import java.util.Scanner;
 
-import javax.imageio.stream.ImageInputStream;
-import javax.print.DocFlavor.INPUT_STREAM;
 public class Color2 extends  Cosys{
     int stepx;
     int stepy;
@@ -27,7 +23,6 @@ public class Color2 extends  Cosys{
         Color color;
 
         for (int n = nn; n>=1; n-=1) {
-
             if (n%2 == 0) {
                 color = Color.PINK;
             } else {
@@ -35,15 +30,14 @@ public class Color2 extends  Cosys{
             }
 
             box(g, color, mx - n*stepx, my + n*stepy, mx + n*stepx, my - n*stepy);
+            g.fillRect(mx - n*stepx, my - n*stepy, n*stepx*2, n*stepy*2);
 
-
-
-            g.fillRect(mx - n*stepx, my - n*stepy, Math.abs((mx + n*stepx)-(mx - n*stepx)), Math.abs((my - n*stepy)-(my + n*stepy)));
-
+            // If you want circles instead of rectangles
+//            g.setColor(color);
+//            int r = n*stepx;
+//            g.fillOval(mx - r, my - r, 2 * r, 2 * r);
 
         }
-
-
     }
 
     public static void main(String[] args) {
@@ -59,7 +53,6 @@ public class Color2 extends  Cosys{
         int nn = scan.nextInt();
 
         Color2 rectangles = new Color2(stepx, stepy, nn);
-
         Cosys.launch(rectangles, "ALAAA");
         
     }
