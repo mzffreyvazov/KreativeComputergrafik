@@ -15,12 +15,9 @@ public class Draw1 extends Cosys {
 
     @Override
     public void draw(Graphics g) {
-        int mx = PIXX / 2;
-        int my = PIXY / 2;
 
-        circle(g, mx, my, 5);
-
-        bdraw(g, command, 1.0);
+        pset(g, MX, MY);
+        bdraw(g, command, 10.0);
     }
 
     public static void main(String[] args) {
