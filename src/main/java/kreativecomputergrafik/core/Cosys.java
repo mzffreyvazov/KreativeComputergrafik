@@ -31,6 +31,9 @@ public abstract class Cosys extends Canvas {
     public static final double R = 200.0;
     public static final double NN = 360.0;
 
+    // for bdraw function
+    protected double drawUnit = 14.0;
+
     public Cosys() {
         setSize(PIXX, PIXY);
         setBackground(Color.WHITE);
@@ -176,6 +179,90 @@ public abstract class Cosys extends Canvas {
 
     // Child classes implement this method
     public abstract void draw(Graphics g);
+
+    public void bdraw(Graphics g, String commands) {
+        bdraw(g, commands, this.drawUnit);
+    }
+
+    // Method 2: Allows overriding drawUnit if a specific program needs a custom size
+    public void bdraw(Graphics g, String commands, double du) {
+        if (commands == null || commands.isEmpty()) return;
+
+        String str = commands.toUpperCase().trim();
+        int i = 0;
+
+        while (i < str.length()) {
+            char c = str.charAt(i);
+
+            // Skip whitespace, semicolons, commas
+            if (c == ' ' || c == ';' || c == ',') {
+                i++;
+                continue;
+            }
+
+            // 1. Check prefixes
+            boolean blindMove = false; // 'B' = move pen without drawing
+            boolean noUpdate  = false; // 'N' = return to origin after draw
+
+            if (c == 'B') {
+                blindMove = true;
+                i++;
+                if (i < str.length()) c = str.charAt(i);
+            } else if (c == 'N') {
+                noUpdate = true;
+                i++;
+                if (i < str.length()) c = str.charAt(i);
+            }
+
+            // 2. Read Direction Letter (U, D, L, R, E, F, G, H)
+            char dir = c;
+            i++;
+
+            // 3. Read distance number (e.g. "R50" -> 50, "R1" -> 1)
+            int startNum = i;
+            while (i < str.length() && Character.isDigit(str.charAt(i))) {
+                i++;
+            }
+
+            double steps = 1.0; // default if no number follows
+            if (i > startNum) {
+                steps = Double.parseDouble(str.substring(startNum, i));
+            }
+
+            // Simply multiply steps by the drawUnit (no *4 gymnastics!)
+            double dist = steps * du;
+
+            // 4. Calculate target position
+            double dx = 0.0;
+            double dy = 0.0;
+
+            switch (dir) {
+                case 'U': dy = -dist; break;              // UP
+                case 'D': dy = dist;  break;              // DOWN
+                case 'L': dx = -dist; break;              // LEFT
+                case 'R': dx = dist;  break;              // RIGHT
+                case 'E': dx = dist;  dy = -dist; break;  // UP-RIGHT
+                case 'F': dx = dist;  dy = dist;  break;  // DOWN-RIGHT
+                case 'G': dx = -dist; dy = dist;  break;  // DOWN-LEFT
+                case 'H': dx = -dist; dy = -dist; break;  // UP-LEFT
+                default: break;
+            }
+
+            double targetX = currentX + dx;
+            double targetY = currentY + dy;
+
+            // Draw line unless 'B' (Blind) was requested
+            if (!blindMove) {
+                line(g, currentX, currentY, targetX, targetY);
+            }
+
+            // Update pen position unless 'N' (No-update) was requested
+            if (!noUpdate) {
+                currentX = targetX;
+                currentY = targetY;
+            }
+        }
+    }
 
     // Reusable window launcher
     public static void launch(Cosys canvas, String title) {
