@@ -32,7 +32,7 @@ public abstract class Cosys extends Canvas {
     public static final double NN = 360.0;
 
     // for bdraw function
-    protected double drawUnit = 14.0;
+    protected double drawUnit = 1.0;
 
     public Cosys() {
         setSize(PIXX, PIXY);
